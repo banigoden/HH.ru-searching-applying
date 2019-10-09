@@ -19,10 +19,7 @@ public class HeadHunter {
     private String request;
 
     private By signInButton = (By.xpath("(.//*[text()='Откликнуться']/..)"));
-    public String requestLink;
-
-   // private static final Cookie COOKIE = new Cookie("name", "value", ".hh.ru", "/",2021.08.15);
-
+    
     public HeadHunter() {
 
         coverLatter = "Dear sir or madam,\n" +
