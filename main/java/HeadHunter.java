@@ -16,10 +16,7 @@ public class HeadHunter {
     private String coverLatter;
     private String nameOfVacancy;
     private String nameOfCompany;
-    private String request;
-
-    private By signInButton = (By.xpath("(.//*[text()='Откликнуться']/..)"));
-    
+        
     public HeadHunter() {
 
         coverLatter = "Dear sir or madam,\n" +
@@ -143,18 +140,19 @@ public class HeadHunter {
                 if( nameOfCompany.contains("ООО Бизнес Технологии") ||nameOfCompany.contains("Сигма")|| (nameOfVacancy.contains("PHP"))|| nameOfCompany.contains("Kelly")){
                     driver.navigate().back();
                 }else {
+                    driver.findElement(By.xpath("/html/body/div[5]/div/div/div[2]/div/div/div[1]/div[1]/div[1]/div[4]/div[1]/div/div/div/div/div[1]/a[1]")).click();
+                  //  boolean isClick = driver.findElements(By.xpath("/html/body/div[8]/div[1]/div/form/div[2]/div[2]/div/textarea")).size()>0;
+                   boolean isClick = driver.findElements(By.xpath("/html/body/div[8]/div[1]/div/form/div[2]/div[2]/span/span")).size()>0;
 
-                    boolean isClick = driver.findElements(By.xpath("/html/body/div[8]/div[1]/div/form/div[2]/div[2]/div/textarea")).size()>0;
-                    if(isClick) {
-
+                    if(!isClick) {
+                        System.out.println("yes");
                         driver.findElement(By.xpath("/html/body/div[8]/div[1]/div/form/div[2]/div[2]/div/textarea")).sendKeys(coverLatter);
                         driver.findElement(By.xpath("/html/body/div[8]/div[1]/div/form/div[3]/div/button")).click();
                         driver.navigate().back();
-                        System.out.println("yes");
+
 
                     }else {
                         System.out.println("no");
-                        driver.findElement(signInButton).click();
                         driver.findElement(By.xpath("/html/body/div[8]/div[1]/div/form/div[2]/div[2]/span/span")).click();
                         driver.findElement(By.xpath("/html/body/div[8]/div[1]/div/form/div[2]/div[2]/div/textarea")).sendKeys(coverLatter);
                         driver.findElement(By.xpath("/html/body/div[8]/div[1]/div/form/div[3]/div/button")).click();
